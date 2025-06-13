@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Gymate
+  version: 1.0.0
+servers:
+  - url: http://{{baseurl}}
+tags:
+  - name: Auth
+paths:
+  /auth/sign-up:
+    post:
+      tags:
+        - Auth
+      summary: Signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: koushik
+                email: koushik@gmail.com
+                phoneNumber: '7980064332'
+                password: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: koushik
+                password: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
