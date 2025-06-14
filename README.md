@@ -14,6 +14,7 @@ Welcome to the **GymMate Backend**, a Node.js-powered RESTful API built to suppo
 ## 📖 Features
 
 - User Authentication (Login, Signup)
+- Ability to send messages through the Contact Us form
 - Fully documented using Swagger
 - RESTful architecture with clean code practices
 
