@@ -6,6 +6,7 @@ servers:
   - url: http://{{baseurl}}
 tags:
   - name: Auth
+  - name: Contact Us
 paths:
   /auth/sign-up:
     post:
@@ -40,6 +41,27 @@ paths:
               example:
                 email: koushik
                 password: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contactus:
+    post:
+      tags:
+        - Contact Us
+      summary: Contact Us
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fullName: '{{$randomFullName}}'
+                email: '{{$randomExampleEmail}}'
+                phoneNumber: '{{$randomPhoneNumber}}'
+                class: Fitness
+                comment: '{{$randomLoremParagraph}}'
       responses:
         '200':
           description: Successful response
