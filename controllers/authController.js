@@ -120,6 +120,7 @@ export const login = expressAsyncHandler(async (req, res) => {
     username: userData?.username,
     email: userData?.email,
     phoneNumber: userData?.phoneNumber,
+    role: userData?.role,
   };
 
   res.status(200).json({
@@ -128,5 +129,23 @@ export const login = expressAsyncHandler(async (req, res) => {
     data,
     accessToken,
     refreshToken,
+  });
+});
+
+/**
+ * @GET
+ * @desc Profile
+ * @route /auth/profile
+ */
+export const profile = expressAsyncHandler(async (req, res) => {
+  const user = await userModel.findById(req.user._id).select('-password');
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  res.status(200).json({
+    success: true,
+    data: user,
   });
 });
