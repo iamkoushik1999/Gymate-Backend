@@ -7,6 +7,8 @@ import {
   getContactUsById,
   deleteContactUs,
 } from '../controllers/contactusController.js';
+// Middlewares
+import { isAuthenticated, isAdmin } from '../middlewares/authMiddleware.js';
 
 // ------------------------------------------------------------
 
@@ -14,12 +16,12 @@ import {
 router.route('/').post(createContactUs);
 
 // GET
-router.route('/').get(getAllContactUs);
+router.route('/').get(isAuthenticated, isAdmin, getAllContactUs);
 
 // GET
-router.route('/:id').get(getContactUsById);
+router.route('/:id').get(isAuthenticated, isAdmin, getContactUsById);
 
 // DELETE
-router.route('/:id').delete(deleteContactUs);
+router.route('/:id').delete(isAuthenticated, isAdmin, deleteContactUs);
 
 export default router;
