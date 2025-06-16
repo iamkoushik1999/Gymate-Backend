@@ -12,6 +12,7 @@ components:
 tags:
   - name: Auth
   - name: Contact Us
+  - name: Gallery
 paths:
   /auth/sign-up:
     post:
@@ -79,6 +80,27 @@ paths:
                 phoneNumber: '{{$randomPhoneNumber}}'
                 class: Fitness
                 comment: '{{$randomLoremParagraph}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /gallery:
+    get:
+      tags:
+        - Gallery
+      summary: Get Gallery Images
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
