@@ -13,6 +13,7 @@ tags:
   - name: Auth
   - name: Contact Us
   - name: Gallery
+  - name: Trainer
 paths:
   /auth/sign-up:
     post:
@@ -101,6 +102,37 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /trainer:
+    get:
+      tags:
+        - Trainer
+      summary: Get Trainers
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /trainer/6852fcaa334da7ead489bf60:
+    get:
+      tags:
+        - Trainer
+      summary: Get Single Trainer
       responses:
         '200':
           description: Successful response
