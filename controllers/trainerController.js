@@ -2,6 +2,10 @@
 import expressAsyncHandler from 'express-async-handler';
 // Models
 import trainerModel from '../models/trainerModel.js';
+import {
+  destroyCloudinary,
+  extractPublicId,
+} from '../helpers/cloudinaryHelper.js';
 
 // ------------------------------------------------------------
 
@@ -171,7 +175,17 @@ export const deleteTrainer = expressAsyncHandler(async (req, res) => {
     res.status(404);
     throw new Error('Trainer not found');
   }
-  await trainerModel.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
+
+  const publicId = extractPublicId(trainer?.image);
+  if (publicId) {
+    const deletedImage = await destroyCloudinary(publicId);
+  }
+
+  await trainerModel.findByIdAndUpdate(
+    id,
+    { image: '', isDeleted: true },
+    { new: true }
+  );
 
   res.status(200).json({
     success: true,
