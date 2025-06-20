@@ -13,7 +13,8 @@ tags:
   - name: Auth
   - name: Contact Us
   - name: Gallery
-  - name: Trainer
+  - name: Trainers
+  - name: Classes
 paths:
   /auth/sign-up:
     post:
@@ -110,7 +111,7 @@ paths:
   /trainer:
     get:
       tags:
-        - Trainer
+        - Trainers
       summary: Get Trainers
       parameters:
         - name: page
@@ -128,11 +129,54 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /trainer/6852fcaa334da7ead489bf60:
+  /trainer/{tarinerId}:
     get:
       tags:
-        - Trainer
-      summary: Get Single Trainer
+        - Trainers
+      summary: Get Trainer Details
+      parameters:
+        - name: tarinerId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /class:
+    get:
+      tags:
+        - Classes
+      summary: Get Classes
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /class/{classId}:
+    get:
+      tags:
+        - Classes
+      summary: Get Class Details
+      parameters:
+        - name: classId
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response

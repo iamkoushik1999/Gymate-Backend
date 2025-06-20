@@ -17,6 +17,7 @@ Welcome to the **GymMate Backend**, a Node.js-powered RESTful API built to suppo
 - Ability to send messages through the Contact Us form
 - Gallery page to view gym images
 - Trainers with their expertise listed
+- Classes with their expert trainers
 - Fully documented using Swagger
 - RESTful architecture with clean code practices
 
